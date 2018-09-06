@@ -1,5 +1,6 @@
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
  /*
 Gruppemedlemmer:
 Joachim Tveita, s326150
@@ -14,7 +15,10 @@ public class Oblig1 {
     }
     
     //Oppgave 1
-    public static int maks(int[] a) {
+    public static int maks(int[] a){
+        if(a.length == 0){
+            throw new NoSuchElementException("Arrayet er tomt, og har derfor ingen storste element");
+        }
         int maksT = 0;
         System.out.println(Arrays.toString(a));
         for (int i=1; i<a.length; i++) {
@@ -25,9 +29,8 @@ public class Oblig1 {
                 maksT = tmp;
                 System.out.println(Arrays.toString(a));
             }
-            System.out.println("Største verdi er:");
         }
+        System.out.println("Største verdi er:");
         return maksT;
-        
     }
 }
