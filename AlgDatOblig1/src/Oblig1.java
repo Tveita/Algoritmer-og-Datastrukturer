@@ -1,11 +1,10 @@
 
 import java.util.Arrays;
-
  /*
 Gruppemedlemmer:
-Joachim Tveita
-Gustav Wahl
-Gustav Wehn
+Joachim Tveita, s326150
+Gustav Wahl, s326164
+Gustav Wehn, s326171
 */
 public class Oblig1 {
     
@@ -16,16 +15,19 @@ public class Oblig1 {
     
     //Oppgave 1
     public static int maks(int[] a) {
-        int tmp = 0;
-        int b[] = new int[0];
+        int maksT = 0;
+        System.out.println(Arrays.toString(a));
         for (int i=1; i<a.length; i++) {
             if (a[i-1]> a[i]) {
-                tmp = a[i-1];
+                int tmp = a[i-1];
                 a[i-1] = a[i];
                 a[i] = tmp;
-                b[] = tmp;
+                maksT = tmp;
+                System.out.println(Arrays.toString(a));
             }
+            System.out.println("Største verdi er:");
         }
-        return b[];
+        return maksT;
+        
     }
 }
