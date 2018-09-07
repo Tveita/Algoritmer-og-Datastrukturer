@@ -158,35 +158,16 @@ public class Oblig1 {
         String[] hjelp = {c, d, e, f, g, h, l, j};
         int lengde = 0;
         String hele = "";
-        for (int i=0; i<8; i++) {
-            if (hjelp[i].length() > lengde) {
-                lengde = hjelp[i].length();
+        for (String hjelp1 : hjelp) {
+            if (hjelp1.length() > lengde) {
+                lengde = hjelp1.length();
             }
         }
-        for (int i=0; i<lengde; i++) {
-            if (i<c.length()) {
-                hele += c.charAt(i);
-            }
-            if (i<d.length()) {
-                hele += d.charAt(i);
-            }
-            if (i<e.length()) {
-                hele += e.charAt(i);
-            }
-            if (i<f.length()) {
-                hele += f.charAt(i);
-            }
-            if (i<g.length()) {
-                hele += g.charAt(i);
-            }
-            if (i<h.length()) {
-                hele += h.charAt(i);
-            }
-            if (i<l.length()) {
-                hele += l.charAt(i);
-            }
-            if (i<j.length()) {
-                hele += j.charAt(i);
+        for (int k=0; k<lengde; k++) {
+            for (String hjelp1 : hjelp) {
+                if (k < hjelp1.length()) {
+                    hele += hjelp1.charAt(k);
+                }
             }
         }
         return hele;
