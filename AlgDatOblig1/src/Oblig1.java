@@ -132,6 +132,45 @@ public class Oblig1 {
             }
         }
     }
+
+     //oppgave 5
+     public static void rotasjon(char[] a){
+
+         for (int i = a.length -1; i >0; i--) {
+
+             char temp = a[i];
+             a[i] = a[i-1];
+             a[i-1] = temp;
+
+         }
+     }
+
+
+
+     //oppgave 6
+     public  static  void rotasjon(char[] a, int k) {
+         if (k < 0) {
+             for (int j = k; j < 0; j++) {
+                 for (int i = 0; i < a.length - 1; i++) {
+
+                     char temp = a[i];
+                     a[i] = a[i + 1];
+                     a[i + 1] = temp;
+                 }
+             }
+
+
+         }else {
+             for (int j = 0; j < k; j++) {
+                 for (int i = a.length - 1; i > 0; i--) {
+
+                     char temp = a[i];
+                     a[i] = a[i - 1];
+                     a[i - 1] = temp;
+                 }
+             }
+         }
+     }
     
     //Oppgave 7a)
     public static String flett(String s, String t) {
