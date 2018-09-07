@@ -27,6 +27,9 @@ public class Oblig1 {
         System.out.println(Arrays.toString(a));
         //rotasjon(b, 4);
         //System.out.println(Arrays.toString(b));
+         // String b = flett("AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU");
+        //System.out.println(b);
+        //boolean b = inneholdt("AB","ABbIJDSab");
     }
     
     //Oppgave 1
@@ -233,5 +236,26 @@ public class Oblig1 {
             }
         }
         return indeks;
+    }
+    
+    //Oppgave 10
+    public static boolean inneholdt(String a, String b) {
+        String[] delerA = a.split("");
+        String[] delerB = b.split("");
+        int lengde = delerA.length;
+        for (int i = 0; i < b.length(); i++) {
+             if (delerA[i].toUpperCase().equals(delerB[i].toUpperCase()) ) {
+                delerA[i] = "0";
+                delerB[i] = "0";
+                lengde = lengde- 1;
+            }
+            System.out.println(lengde);
+            System.out.println(delerA[i] + " " + delerB[i]);
+        }
+        if (lengde == 0) {
+            return true;
+        }else {
+            return false;
+        }
     }
 }
