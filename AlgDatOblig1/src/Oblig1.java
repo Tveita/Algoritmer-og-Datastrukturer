@@ -10,10 +10,11 @@ Gustav Wehn, s326171
 public class Oblig1 {
     
     public static void main(String [] args) {
-        int a[]= {1,2,3,4,4,4,5,5,5,6,6};
+        int a[]= {};
         //System.out.println(maks(a));
         //System.out.println(ombyttinger(a));
-        System.out.println(antallUlikeSortert(a));
+        //System.out.println(antallUlikeSortert(a));
+        System.out.println(antallUlikeUsortert(a));
     }
     
     //Oppgave 1
@@ -68,6 +69,24 @@ public class Oblig1 {
         }
         for(int i = 1; i < a.length; i++){
             if(a[i] != a[i - 1]){
+                ant++;
+            }
+        }
+        return ant;
+    }
+    
+    //Oppgave 3
+    public static int antallUlikeUsortert(int[] a) {
+        int ant = 0;
+        
+        for (int i=0; i<a.length; i++) {
+            int lik = 0;
+            for (int k=i; k<a.length; k++) {
+                if(a[i] == a[k] && i != k) {
+                    lik++;
+                }
+            }
+            if (lik == 0) {
                 ant++;
             }
         }
