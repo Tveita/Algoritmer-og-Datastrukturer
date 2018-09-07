@@ -10,7 +10,8 @@ Gustav Wehn, s326171
 public class Oblig1 {
     
     public static void main(String [] args) {
-        int a[]= {-9,6,3,5,7,2,-7,-8,3};
+        int a[]= {9,6,7,9,7,4,7,8,3};
+        char b[] = {'a','b','c','d','e','f','g','h','i','j'};
         //System.out.println(maks(a));
         //System.out.println(ombyttinger(a));
         //System.out.println(antallUlikeSortert(a));
@@ -20,8 +21,12 @@ public class Oblig1 {
         //System.out.println(Arrays.toString(a));
         //String b = flett("123","456");
         //System.out.println(b);
-        String b = flett("AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU");
-        System.out.println(b);
+        //String b = flett("AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU");
+        //System.out.println(b);
+        a = indekssortering(a);
+        System.out.println(Arrays.toString(a));
+        //rotasjon(b, 4);
+        //System.out.println(Arrays.toString(b));
     }
     
     //Oppgave 1
@@ -133,6 +138,36 @@ public class Oblig1 {
         }
     }
     
+    //oppgave 5
+    public static void rotasjon(char[] a){
+        for (int i = a.length -1; i >0; i--) {
+            char temp = a[i];
+            a[i] = a[i-1];
+            a[i-1] = temp;
+        }
+    }
+    
+    //oppgave 6
+    public  static  void rotasjon(char[] a, int k) {
+        if (k < 0) {
+            for (int j = k; j < 0; j++) {
+                for (int i = 0; i < a.length - 1; i++) {
+                    char temp = a[i];
+                    a[i] = a[i + 1];
+                    a[i + 1] = temp;
+                }
+            }
+        }else {
+            for (int j = 0; j < k; j++) {
+                for (int i = a.length - 1; i > 0; i--) {
+                    char temp = a[i];
+                    a[i] = a[i - 1];
+                    a[i - 1] = temp;
+                }
+            }
+        }
+    }
+    
     //Oppgave 7a)
     public static String flett(String s, String t) {
         String alt = "";
@@ -171,5 +206,32 @@ public class Oblig1 {
             }
         }
         return hele;
+    }
+    
+    //Oppgave 8
+    public static int[] indekssortering(int[] a){
+        int[] indeks = new int[a.length];
+        int minVerdi = a[0];
+        int m = 0;
+        for(int k = 0; k < a.length; k++){
+            for(int i = 0; i < a.length; i++){
+                if(a[i] < minVerdi){
+                    minVerdi = a[i];
+                    m = i;
+                }
+                for(int j = 0; j < indeks.length; j++){
+                    if(m == indeks[j]){
+                        
+                    }else{
+                        if(a[i] < minVerdi){
+                            minVerdi = a[i];
+                            m = i;
+                        }
+                        indeks[k] = m;
+                    }
+                }
+            }
+        }
+        return indeks;
     }
 }
