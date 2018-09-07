@@ -10,11 +10,14 @@ Gustav Wehn, s326171
 public class Oblig1 {
     
     public static void main(String [] args) {
-        int a[]= {};
+        int a[]= {-9,6,3,5,7,2,-7,-8,3};
         //System.out.println(maks(a));
         //System.out.println(ombyttinger(a));
         //System.out.println(antallUlikeSortert(a));
-        System.out.println(antallUlikeUsortert(a));
+        //System.out.println(antallUlikeUsortert(a));
+        System.out.println(Arrays.toString(a));
+        delsortering(a);
+        System.out.println(Arrays.toString(a));
     }
     
     //Oppgave 1
@@ -91,5 +94,37 @@ public class Oblig1 {
             }
         }
         return ant;
+    }
+    
+    //Oppgave 4
+    public static void delsortering(int[] a){
+        for(int k = 0; k < a.length; k++){
+            for(int i = 1; i <a.length; i++){
+                if(a[i]%2 != 0){
+                    if(a[i]>a[i-1]){
+                        int hjelp = a[i-1];
+                        a[i-1] = a[i];
+                        a[i] = hjelp; 
+                    }
+                }else{
+                    if(i+1 < a.length && a[i]>a[i+1]){
+                        int hjelp2 = a[i+1];
+                        a[i+1] = a[i];
+                        a[i] = hjelp2;
+                    }
+                }
+            }
+        }
+        for(int k = 0; k < a.length; k++){
+            for(int i = 0; i < a.length; i++){
+                if(a[i]%2 != 0){
+                    if(a[i] > a[i+1] && a[i+1]%2 != 0){
+                        int hjelp3 = a[i+1];
+                        a[i+1] = a[i];
+                        a[i] = hjelp3;
+                    }
+                }
+            }
+        }
     }
 }
