@@ -15,9 +15,13 @@ public class Oblig1 {
         //System.out.println(ombyttinger(a));
         //System.out.println(antallUlikeSortert(a));
         //System.out.println(antallUlikeUsortert(a));
-        System.out.println(Arrays.toString(a));
-        delsortering(a);
-        System.out.println(Arrays.toString(a));
+        //System.out.println(Arrays.toString(a));
+        //delsortering(a);
+        //System.out.println(Arrays.toString(a));
+        //String b = flett("123","456");
+        //System.out.println(b);
+        String b = flett("AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU");
+        System.out.println(b);
     }
     
     //Oppgave 1
@@ -98,19 +102,20 @@ public class Oblig1 {
     
     //Oppgave 4
     public static void delsortering(int[] a){
+        int hjelp = 0;
         for(int k = 0; k < a.length; k++){
             for(int i = 1; i <a.length; i++){
                 if(a[i]%2 != 0){
                     if(a[i]>a[i-1]){
-                        int hjelp = a[i-1];
+                        hjelp = a[i-1];
                         a[i-1] = a[i];
                         a[i] = hjelp; 
                     }
                 }else{
                     if(i+1 < a.length && a[i]>a[i+1]){
-                        int hjelp2 = a[i+1];
+                        hjelp = a[i+1];
                         a[i+1] = a[i];
-                        a[i] = hjelp2;
+                        a[i] = hjelp;
                     }
                 }
             }
@@ -119,12 +124,71 @@ public class Oblig1 {
             for(int i = 0; i < a.length; i++){
                 if(a[i]%2 != 0){
                     if(a[i] > a[i+1] && a[i+1]%2 != 0){
-                        int hjelp3 = a[i+1];
+                        hjelp = a[i+1];
                         a[i+1] = a[i];
-                        a[i] = hjelp3;
+                        a[i] = hjelp;
                     }
                 }
             }
         }
+    }
+    
+    //Oppgave 7a)
+    public static String flett(String s, String t) {
+        String alt = "";
+        int lengde = 0;
+        if (s.length() >= t.length()) {
+            lengde = s.length();
+        }
+        else {
+            lengde = t.length();
+        }
+        for (int i=0; i<lengde; i++) {
+            if (i<s.length()) {
+                alt += s.charAt(i);
+            }
+            if (i<t.length()) {
+                alt += t.charAt(i);
+            }
+        }
+        return alt;
+    }
+    //Oppgave 7b)
+    public static String flett(String c, String d, String e, String f, String g, String h, String l, String j) {
+        String[] hjelp = {c, d, e, f, g, h, l, j};
+        int lengde = 0;
+        String hele = "";
+        for (int i=0; i<8; i++) {
+            if (hjelp[i].length() > lengde) {
+                lengde = hjelp[i].length();
+            }
+        }
+        for (int i=0; i<lengde; i++) {
+            if (i<c.length()) {
+                hele += c.charAt(i);
+            }
+            if (i<d.length()) {
+                hele += d.charAt(i);
+            }
+            if (i<e.length()) {
+                hele += e.charAt(i);
+            }
+            if (i<f.length()) {
+                hele += f.charAt(i);
+            }
+            if (i<g.length()) {
+                hele += g.charAt(i);
+            }
+            if (i<h.length()) {
+                hele += h.charAt(i);
+            }
+            if (i<l.length()) {
+                hele += l.charAt(i);
+            }
+            if (i<j.length()) {
+                hele += j.charAt(i);
+            }
+        }
+        return hele;
     }
 }
