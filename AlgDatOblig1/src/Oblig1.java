@@ -1,5 +1,7 @@
 
+
 import java.util.Arrays;
+
 import java.util.NoSuchElementException;
  /*
 Gruppemedlemmer:
@@ -20,7 +22,9 @@ public class Oblig1 {
         //System.out.println(Arrays.toString(a));
         //String b = flett("123","456");
         //System.out.println(b);
-        String b = flett("AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU");
+       // String b = flett("AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU");
+        //System.out.println(b);
+        boolean b = inneholdt("AB","ABbIJDSab");
         System.out.println(b);
     }
     
@@ -210,5 +214,33 @@ public class Oblig1 {
             }
         }
         return hele;
+    }
+
+    //oppgave 10
+
+    public static boolean inneholdt(String a, String b){
+        String[] delerA = a.split("");
+        String[] delerB = b.split("");
+        int lengde = delerA.length;
+
+
+        for (int i = 0; i < b.length(); i++) {
+
+             if (delerA[i].toUpperCase().equals(delerB[i].toUpperCase()) ){
+                delerA[i] = "0";
+                delerB[i] = "0";
+                lengde = lengde- 1;
+
+            }
+
+            System.out.println(lengde);
+            System.out.println(delerA[i] + " " + delerB[i]);
+        }
+        if (lengde == 0) {
+            return true;
+        }else {
+            return false;
+        }
+
     }
 }
