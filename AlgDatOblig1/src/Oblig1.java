@@ -254,7 +254,42 @@ public class Oblig1 {
         return indeks;
     }
     
-
+    //Oppgave 9
+    public static int[] tredjeMin(int[]  a){
+        
+        int[] hjelp = {a[0], a[1], a[2]};
+        hjelp = indekssortering(hjelp);
+        int m = hjelp[0];
+        int nm = hjelp[1];
+        int tm = hjelp[2];
+        int mVerdi = a[m];
+        int nmVerdi = a[nm];
+        int tmVerdi = a[tm];
+        
+        for(int i = 3; i < a.length; i++){
+            if(a[i] < tmVerdi){
+                if(a[i] < nmVerdi){
+                    if(a[i] < mVerdi){
+                        tmVerdi = nmVerdi;
+                        tm = nm;
+                        nmVerdi = mVerdi;
+                        nm = m;
+                        mVerdi = a[i];
+                        m = i;
+                    }else{
+                        tmVerdi = nmVerdi;
+                        tm = nm;
+                        nmVerdi = a[i];
+                        nm = i;
+                    }
+                }else{
+                    tmVerdi = a[i];
+                    tm = i;
+                }
+            }
+        }
+        return new int[] {m, nm, tm};
+    }
 
     //oppgave 10
 
