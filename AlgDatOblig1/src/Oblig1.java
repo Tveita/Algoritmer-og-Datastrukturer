@@ -34,7 +34,7 @@ public class Oblig1 {
         //boolean b = inneholdt("AB","ABbIJDSab");
     }
 
-    }
+
     
     //Oppgave 1
     public static int maks(int[] a){
@@ -184,35 +184,7 @@ public class Oblig1 {
          }
      }
     
-    //oppgave 5
-    public static void rotasjon(char[] a){
-        for (int i = a.length -1; i >0; i--) {
-            char temp = a[i];
-            a[i] = a[i-1];
-            a[i-1] = temp;
-        }
-    }
-    
-    //oppgave 6
-    public  static  void rotasjon(char[] a, int k) {
-        if (k < 0) {
-            for (int j = k; j < 0; j++) {
-                for (int i = 0; i < a.length - 1; i++) {
-                    char temp = a[i];
-                    a[i] = a[i + 1];
-                    a[i + 1] = temp;
-                }
-            }
-        }else {
-            for (int j = 0; j < k; j++) {
-                for (int i = a.length - 1; i > 0; i--) {
-                    char temp = a[i];
-                    a[i] = a[i - 1];
-                    a[i - 1] = temp;
-                }
-            }
-        }
-    }
+
     
     //Oppgave 7a)
     public static String flett(String s, String t) {
@@ -286,29 +258,27 @@ public class Oblig1 {
 
     //oppgave 10
 
-    public static boolean inneholdt(String a, String b){
-        String[] delerA = a.split("");
-        String[] delerB = b.split("");
-        int lengde = delerA.length;
+     public static boolean inneholdt(String a, String b){
+         String[] delerA = a.split("");
+         String[] delerB = b.split("");
+         int lengde = delerA.length;
 
+         for (int j = 0; j < delerA.length; j++) {
+             for (int i = 0; i < delerB.length; i++) {
 
-        for (int i = 0; i < b.length(); i++) {
+                 if (delerA[j].toUpperCase().equals(delerB[i].toUpperCase())) {
+                     lengde = lengde - 1;
+                 }
 
-             if (delerA[i].toUpperCase().equals(delerB[i].toUpperCase()) ){
-                delerA[i] = "0";
-                delerB[i] = "0";
-                lengde = lengde- 1;
+                 System.out.println(lengde);
+                 System.out.println(delerA[j] + " ... -> " + delerB[i]);
+             }
+         }
+         if (lengde <= 0) {
+             return true;
+         }else {
+             return false;
+         }
 
-            }
-
-
-            System.out.println(lengde);
-            System.out.println(delerA[i] + " " + delerB[i]);
-        }
-        if (lengde == 0) {
-            return true;
-        }else {
-            return false;
-        }
-    }
+     }
 }
