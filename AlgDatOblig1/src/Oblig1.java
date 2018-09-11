@@ -230,26 +230,22 @@ public class Oblig1 {
     //Oppgave 8
     public static int[] indekssortering(int[] a){
         int[] indeks = new int[a.length];
+        int[] hjelp = a;
+        int pos = 0;
         int minVerdi = a[0];
-        int m = 0;
         for(int k = 0; k < a.length; k++){
             for(int i = 0; i < a.length; i++){
-                if(a[i] < minVerdi){
+                if(hjelp[i] < minVerdi){
                     minVerdi = a[i];
-                    m = i;
+                    pos = i;
+                    indeks[k] = pos;
                 }
-                for(int j = 0; j < indeks.length; j++){
-                    if(m == indeks[j]){
-                        
-                    }else{
-                        if(a[i] < minVerdi){
-                            minVerdi = a[i];
-                            m = i;
-                        }
-                        indeks[k] = m;
-                    }
+                if(i == a.length - 1){
+                    hjelp[pos] = Integer.MAX_VALUE;
                 }
             }
+            minVerdi = a[0];
+            pos = 0;
         }
         return indeks;
     }
