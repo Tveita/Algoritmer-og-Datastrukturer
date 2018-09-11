@@ -24,7 +24,7 @@ public class Oblig1 {
         //System.out.println(b);
        // String b = flett("AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU");
         //System.out.println(b);
-        boolean b = inneholdt("AB","ABbIJDSab");
+        boolean b = inneholdt("banfdsjbfofofsabewddsfbasbksafbf","basbksafba");
         System.out.println(b);
     }
     
@@ -223,20 +223,18 @@ public class Oblig1 {
         String[] delerB = b.split("");
         int lengde = delerA.length;
 
+        for (int j = 0; j < delerA.length; j++) {
+            for (int i = 0; i < delerB.length; i++) {
 
-        for (int i = 0; i < b.length(); i++) {
+                if (delerA[j].toUpperCase().equals(delerB[i].toUpperCase())) {
+                    lengde = lengde - 1;
+                }
 
-             if (delerA[i].toUpperCase().equals(delerB[i].toUpperCase()) ){
-                delerA[i] = "0";
-                delerB[i] = "0";
-                lengde = lengde- 1;
-
+                System.out.println(lengde);
+                System.out.println(delerA[j] + " ... -> " + delerB[i]);
             }
-
-            System.out.println(lengde);
-            System.out.println(delerA[i] + " " + delerB[i]);
         }
-        if (lengde == 0) {
+        if (lengde <= 0) {
             return true;
         }else {
             return false;
