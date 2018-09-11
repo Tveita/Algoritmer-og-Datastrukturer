@@ -1,5 +1,7 @@
 
+
 import java.util.Arrays;
+
 import java.util.NoSuchElementException;
  /*
 Gruppemedlemmer:
@@ -30,6 +32,8 @@ public class Oblig1 {
          // String b = flett("AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU");
         //System.out.println(b);
         //boolean b = inneholdt("AB","ABbIJDSab");
+    }
+
     }
     
     //Oppgave 1
@@ -140,6 +144,45 @@ public class Oblig1 {
             }
         }
     }
+
+     //oppgave 5
+     public static void rotasjon(char[] a){
+
+         for (int i = a.length -1; i >0; i--) {
+
+             char temp = a[i];
+             a[i] = a[i-1];
+             a[i-1] = temp;
+
+         }
+     }
+
+
+
+     //oppgave 6
+     public  static  void rotasjon(char[] a, int k) {
+         if (k < 0) {
+             for (int j = k; j < 0; j++) {
+                 for (int i = 0; i < a.length - 1; i++) {
+
+                     char temp = a[i];
+                     a[i] = a[i + 1];
+                     a[i + 1] = temp;
+                 }
+             }
+
+
+         }else {
+             for (int j = 0; j < k; j++) {
+                 for (int i = a.length - 1; i > 0; i--) {
+
+                     char temp = a[i];
+                     a[i] = a[i - 1];
+                     a[i - 1] = temp;
+                 }
+             }
+         }
+     }
     
     //oppgave 5
     public static void rotasjon(char[] a){
@@ -210,6 +253,7 @@ public class Oblig1 {
         }
         return hele;
     }
+
     
     //Oppgave 8
     public static int[] indekssortering(int[] a){
@@ -238,17 +282,26 @@ public class Oblig1 {
         return indeks;
     }
     
-    //Oppgave 10
-    public static boolean inneholdt(String a, String b) {
+
+
+    //oppgave 10
+
+    public static boolean inneholdt(String a, String b){
         String[] delerA = a.split("");
         String[] delerB = b.split("");
         int lengde = delerA.length;
+
+
         for (int i = 0; i < b.length(); i++) {
-             if (delerA[i].toUpperCase().equals(delerB[i].toUpperCase()) ) {
+
+             if (delerA[i].toUpperCase().equals(delerB[i].toUpperCase()) ){
                 delerA[i] = "0";
                 delerB[i] = "0";
                 lengde = lengde- 1;
+
             }
+
+
             System.out.println(lengde);
             System.out.println(delerA[i] + " " + delerB[i]);
         }
