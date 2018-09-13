@@ -39,36 +39,32 @@ public class Oblig1 {
     //Oppgave 1
     public static int maks(int[] a){
         if(a.length == 0){
-            throw new NoSuchElementException("Arrayet er tomt, og har derfor ingen storste element");
+            throw new java.util.NoSuchElementException("Arrayet er tomt, og har derfor ingen storste element");
         }
-        int maksT = 0;
-        System.out.println(Arrays.toString(a));
-        for (int i=1; i<a.length; i++) {
-            if (a[i-1]> a[i]) {
-                int tmp = a[i-1];
-                a[i-1] = a[i];
+        int maksT = a[0];
+        for(int i = 0; i < a.length - 1; i++){
+            if(a[i] > a[i+1]){
+                int tmp = a[i+1];
+                a[i+1] = a[i];
                 a[i] = tmp;
-                maksT = tmp;
-                System.out.println(Arrays.toString(a));
+                maksT = a[i+1];
+            }else if(a[i] < a[i+1]){
+                maksT = a[i+1];
             }
         }
-        System.out.println("Største verdi er:");
         return maksT;
     }
     
     public  static int ombyttinger(int[] a) {
         int ombyttinger = 0;
-        System.out.println(Arrays.toString(a));
         for (int i=1; i<a.length; i++) {
             if (a[i-1]> a[i]) {
                 int tmp = a[i-1];
                 a[i-1] = a[i];
                 a[i] = tmp;
-                System.out.println(Arrays.toString(a));
                 ombyttinger++;
             }
         }
-        System.out.println("Antall ombyttinger:");
         return ombyttinger;
     }
     
@@ -115,74 +111,73 @@ public class Oblig1 {
     //Oppgave 4
     public static void delsortering(int[] a){
         int hjelp = 0;
-        for(int k = 0; k < a.length; k++){
-            for(int i = 1; i <a.length; i++){
-                if(a[i]%2 != 0){
-                    if(a[i]>a[i-1]){
-                        hjelp = a[i-1];
-                        a[i-1] = a[i];
-                        a[i] = hjelp; 
+        if(a.length > 1){
+            for(int k = 0; k < a.length; k++){
+                for(int i = 1; i <a.length; i++){
+                    if(a[i]%2 != 0){
+                        if(a[i]>a[i-1] && a[i-1]%2 == 0){
+                            hjelp = a[i-1];
+                            a[i-1] = a[i];
+                            a[i] = hjelp; 
+                        }
+                    }else{
+                        if(i+1 < a.length && a[i]>a[i+1]){
+                            hjelp = a[i+1];
+                            a[i+1] = a[i];
+                            a[i] = hjelp;
+                        }
                     }
-                }else{
-                    if(i+1 < a.length && a[i]>a[i+1]){
-                        hjelp = a[i+1];
-                        a[i+1] = a[i];
-                        a[i] = hjelp;
+                    //System.out.println(Arrays.toString(a));
+                }
+            }
+            for(int k = 0; k < a.length; k++){
+                for(int i = 0; i < a.length-1; i++){
+                    if(a[i]%2 == 0){
+                        if(a[i] > a[i+1] && a[i+1]%2 == 0){
+                            hjelp = a[i+1];
+                            a[i+1] = a[i];
+                            a[i] = hjelp;
+                        }
                     }
                 }
             }
         }
-        for(int k = 0; k < a.length; k++){
-            for(int i = 0; i < a.length; i++){
-                if(a[i]%2 != 0){
-                    if(a[i] > a[i+1] && a[i+1]%2 != 0){
-                        hjelp = a[i+1];
-                        a[i+1] = a[i];
-                        a[i] = hjelp;
-                    }
+        
+    }
+
+    //oppgave 5
+    public static void rotasjon(char[] a){
+
+        for (int i = a.length -1; i >0; i--) {
+            char temp = a[i];
+            a[i] = a[i-1];
+            a[i-1] = temp;
+        }
+    }
+
+
+
+    //oppgave 6
+    public  static  void rotasjon(char[] a, int k) {
+        if (k < 0) {
+            for (int j = k; j < 0; j++) {
+                for (int i = 0; i < a.length - 1; i++) {
+                    char temp = a[i];
+                    a[i] = a[i + 1];
+                    a[i + 1] = temp;
+                }
+            }
+        }else {
+            for (int j = 0; j < k; j++) {
+                for (int i = a.length - 1; i > 0; i--) {
+
+                    char temp = a[i];
+                    a[i] = a[i - 1];
+                    a[i - 1] = temp;
                 }
             }
         }
     }
-
-     //oppgave 5
-     public static void rotasjon(char[] a){
-
-         for (int i = a.length -1; i >0; i--) {
-
-             char temp = a[i];
-             a[i] = a[i-1];
-             a[i-1] = temp;
-
-         }
-     }
-
-
-
-     //oppgave 6
-     public  static  void rotasjon(char[] a, int k) {
-         if (k < 0) {
-             for (int j = k; j < 0; j++) {
-                 for (int i = 0; i < a.length - 1; i++) {
-
-                     char temp = a[i];
-                     a[i] = a[i + 1];
-                     a[i + 1] = temp;
-                 }
-             }
-
-
-         }else {
-             for (int j = 0; j < k; j++) {
-                 for (int i = a.length - 1; i > 0; i--) {
-
-                     char temp = a[i];
-                     a[i] = a[i - 1];
-                     a[i - 1] = temp;
-                 }
-             }
-         }
-     }
     
 
     
@@ -207,19 +202,18 @@ public class Oblig1 {
         return alt;
     }
     //Oppgave 7b)
-    public static String flett(String c, String d, String e, String f, String g, String h, String l, String j) {
-        String[] hjelp = {c, d, e, f, g, h, l, j};
+    public static String flett(String... s) {
         int lengde = 0;
         String hele = "";
-        for (String hjelp1 : hjelp) {
-            if (hjelp1.length() > lengde) {
-                lengde = hjelp1.length();
+        for (String tab1 : s) {
+            if (tab1.length() > lengde) {
+                lengde = tab1.length();
             }
         }
         for (int k=0; k<lengde; k++) {
-            for (String hjelp1 : hjelp) {
-                if (k < hjelp1.length()) {
-                    hele += hjelp1.charAt(k);
+            for (String tab1 : s) {
+                if (k < tab1.length()) {
+                    hele += tab1.charAt(k);
                 }
             }
         }
@@ -230,9 +224,12 @@ public class Oblig1 {
     //Oppgave 8
     public static int[] indekssortering(int[] a){
         int[] indeks = new int[a.length];
-        int[] hjelp = a;
+        int[] hjelp = new int[a.length];
+        for(int i = 0; i < a.length; i++){
+            hjelp[i] = a[i];
+        }
         int pos = 0;
-        int minVerdi = a[0];
+        int minVerdi = Integer.MAX_VALUE;
         for(int k = 0; k < a.length; k++){
             for(int i = 0; i < a.length; i++){
                 if(hjelp[i] < minVerdi){
@@ -244,7 +241,7 @@ public class Oblig1 {
                     hjelp[pos] = Integer.MAX_VALUE;
                 }
             }
-            minVerdi = a[0];
+            minVerdi = Integer.MAX_VALUE;
             pos = 0;
         }
         return indeks;
@@ -252,6 +249,9 @@ public class Oblig1 {
     
     //Oppgave 9
     public static int[] tredjeMin(int[]  a){
+        if(a.length < 3){
+            throw new java.util.NoSuchElementException();
+        }
         
         int[] hjelp = {a[0], a[1], a[2]};
         hjelp = indekssortering(hjelp);
@@ -289,27 +289,24 @@ public class Oblig1 {
 
     //oppgave 10
 
-     public static boolean inneholdt(String a, String b){
-         String[] delerA = a.split("");
-         String[] delerB = b.split("");
-         int lengde = delerA.length;
+    public static boolean inneholdt(String a, String b){
+        String[] delerA = a.split("");
+        String[] delerB = b.split("");
+        int lengde = delerA.length;
 
-         for (int j = 0; j < delerA.length; j++) {
-             for (int i = 0; i < delerB.length; i++) {
+        for (int j = 0; j < delerA.length; j++) {
+            for (int i = 0; i < delerB.length; i++) {
 
-                 if (delerA[j].toUpperCase().equals(delerB[i].toUpperCase())) {
-                     lengde = lengde - 1;
-                 }
+                if (delerA[j].toUpperCase().equals(delerB[i].toUpperCase())) {
+                    lengde = lengde - 1;
+                }
+            }
+        }
+        if (lengde <= 0) {
+            return true;
+        }else {
+            return false;
+        }
 
-                 System.out.println(lengde);
-                 System.out.println(delerA[j] + " ... -> " + delerB[i]);
-             }
-         }
-         if (lengde <= 0) {
-             return true;
-         }else {
-             return false;
-         }
-
-     }
+    }
 }
