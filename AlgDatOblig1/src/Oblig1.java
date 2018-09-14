@@ -1,7 +1,10 @@
 
 
+
+import java.util.ArrayList;
 import java.util.Arrays;
 
+import java.util.List;
 import java.util.NoSuchElementException;
  /*
 Gruppemedlemmer:
@@ -10,10 +13,10 @@ Gustav Wahl, s326164
 Gustav Wehn, s326171
 */
 public class Oblig1 {
-    
+
     public static void main(String [] args) {
-        int a[]= {9,6,7,9,7,4,7,8,3};
-        char b[] = {'a','b','c','d','e','f','g','h','i','j'};
+        //int a[]= {9,6,7,9,7,4,7,8,3};
+        //char b[] = {'a','b','c','d','e','f','g','h','i','j'};
         //System.out.println(maks(a));
         //System.out.println(ombyttinger(a));
         //System.out.println(antallUlikeSortert(a));
@@ -25,8 +28,8 @@ public class Oblig1 {
         //System.out.println(b);
         //String b = flett("AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU");
         //System.out.println(b);
-        a = indekssortering(a);
-        System.out.println(Arrays.toString(a));
+       // a = indekssortering(a);
+      //  System.out.println(Arrays.toString(a));
         //rotasjon(b, 4);
         //System.out.println(Arrays.toString(b));
          // String b = flett("AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU");
@@ -158,25 +161,28 @@ public class Oblig1 {
 
 
     //oppgave 6
-    public  static  void rotasjon(char[] a, int k) {
-        if (k < 0) {
-            for (int j = k; j < 0; j++) {
-                for (int i = 0; i < a.length - 1; i++) {
-                    char temp = a[i];
-                    a[i] = a[i + 1];
-                    a[i + 1] = temp;
-                }
-            }
-        }else {
-            for (int j = 0; j < k; j++) {
-                for (int i = a.length - 1; i > 0; i--) {
+    public  static void rotasjon(char[] a, int k) {
 
-                    char temp = a[i];
-                    a[i] = a[i - 1];
-                    a[i - 1] = temp;
+        int lengde = a.length -1;
+           if (k <= 0) {
+                for (int j = k; j < 0; j++) {
+                    for (int i = 0; i < lengde; i++) {
+                       char temp = a[i];
+                       a[i] = a[i + 1];
+                       a[i + 1] = temp;
+
+                   }
                 }
-            }
-        }
+           }else {
+              for (int j = 0; j < k; j++) {
+                   for (int i = lengde; i > 0; i--) {
+
+                       char temp = a[i];
+                       a[i] = a[i - 1];
+                       a[i - 1] = temp;
+                   }
+              }
+           }
     }
     
 
@@ -289,24 +295,36 @@ public class Oblig1 {
 
     //oppgave 10
 
-    public static boolean inneholdt(String a, String b){
-        String[] delerA = a.split("");
+    public static boolean inneholdt(String a, String b) {
+
+
         String[] delerB = b.split("");
-        int lengde = delerA.length;
+        String[] delerA = a.split("");
+        Arrays.sort(delerA);
+        Arrays.sort(delerB);
 
-        for (int j = 0; j < delerA.length; j++) {
-            for (int i = 0; i < delerB.length; i++) {
+        if (a.length() == 0){
+            return true;
+        }
+        if(b.length() == 0){
+            return false;
+        }
 
-                if (delerA[j].toUpperCase().equals(delerB[i].toUpperCase())) {
-                    lengde = lengde - 1;
+            int j = 0;
+            for (int i = 0; i < delerB.length; ++i) {
+
+                if (delerA[j].equals(delerB[i])) {
+                    j++;
+
+                    if (j == delerA.length) {
+                        return true;
+                    }
                 }
             }
-        }
-        if (lengde <= 0) {
-            return true;
-        }else {
+
             return false;
         }
 
     }
-}
+
+
