@@ -45,10 +45,11 @@ public class Oblig1{
         return ombyttinger;
     }
     
-    //Punkt 1: Det blir flest byttinger naar tabellen er sortert med det storste tallet forst;
-    //Punkt 2: Det blir ferrest byttinger naar tabellen er sortert i stigende rekkefolge;
-    //Punkt 3: 
-    //MAA SVARE PAA PUNKT TRE FRA OPPGAVE 1
+    //Punkt 1: Det blir flest byttinger naar tabellen er sortert med det storste tallet forst.
+    //Punkt 2: Det blir ferrest byttinger naar tabellen er sortert i stigende rekkefolge.
+    //Punkt 3: Etter mye testing med forskjellige lengder og permutasjoner ble gjennomsnitlig
+    //         antall ombyttinger fem mmindre enn lengden på arrayen. Den er ikke raskere enn
+    //         binaertraer-metoden ettersom den må sjekke igjennom samtlige verdier i arrayen.
     
     
     //Oppgave 2
