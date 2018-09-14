@@ -31,12 +31,15 @@ public class Oblig1{
         return maksT;
     }
     
-    public  static int ombyttinger(int[] a) {
+    public static int ombyttinger(int[] a){
+        if(a.length == 0){
+            throw new java.util.NoSuchElementException("Arrayet er tomt, og har derfor ingen storste element");
+        }
         int ombyttinger = 0;
-        for (int i=1; i<a.length; i++) {
-            if (a[i-1]> a[i]) {
-                int tmp = a[i-1];
-                a[i-1] = a[i];
+        for(int i = 0; i < a.length - 1; i++){
+            if(a[i] > a[i+1]){
+                int tmp = a[i+1];
+                a[i+1] = a[i];
                 a[i] = tmp;
                 ombyttinger++;
             }
