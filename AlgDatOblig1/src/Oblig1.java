@@ -1,21 +1,16 @@
+package algoritmer.og.datastrukturer;
 
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
-import java.util.List;
-import java.util.NoSuchElementException;
  /*
 Gruppemedlemmer:
 Joachim Tveita, s326150
 Gustav Wahl, s326164
 Gustav Wehn, s326171
 */
-public class Oblig1 {
-
-
-
+public class Oblig1{
     
     //Oppgave 1
     public static int maks(int[] a){
@@ -49,8 +44,11 @@ public class Oblig1 {
         return ombyttinger;
     }
     
-    //NB!
+    //Punkt 1: Det blir flest byttinger naar tabellen er sortert med det storste tallet forst;
+    //Punkt 2: Det blir ferrest byttinger naar tabellen er sortert i stigende rekkefolge;
+    //Punkt 3: 
     //MÅ SVARE PÅ PUNKT TRE FRA OPPGAVE 1
+    
     
     //Oppgave 2
     public static int antallUlikeSortert(int[] a){
@@ -71,6 +69,7 @@ public class Oblig1 {
         return ant;
     }
     
+    
     //Oppgave 3
     public static int antallUlikeUsortert(int[] a) {
         int ant = 0;
@@ -89,43 +88,66 @@ public class Oblig1 {
         return ant;
     }
     
+    
     //Oppgave 4
-    public static void delsortering(int[] a){
-        int hjelp = 0;
-        if(a.length > 1){
-            for(int k = 0; k < a.length; k++){
-                for(int i = 1; i <a.length; i++){
-                    if(a[i]%2 != 0){
-                        if(a[i]>a[i-1] && a[i-1]%2 == 0){
-                            hjelp = a[i-1];
-                            a[i-1] = a[i];
-                            a[i] = hjelp; 
-                        }
-                    }else{
-                        if(i+1 < a.length && a[i]>a[i+1]){
-                            hjelp = a[i+1];
-                            a[i+1] = a[i];
-                            a[i] = hjelp;
-                        }
-                    }
-                    //System.out.println(Arrays.toString(a));
-                }
-            }
-            for(int k = 0; k < a.length; k++){
-                for(int i = 0; i < a.length-1; i++){
-                    if(a[i]%2 == 0){
-                        if(a[i] > a[i+1] && a[i+1]%2 == 0){
-                            hjelp = a[i+1];
-                            a[i+1] = a[i];
-                            a[i] = hjelp;
-                        }
-                    }
-                }
+    public static void delsortering(int a[]) {
+        if(a.length < 1)
+            return;
+        //teller antall oddetall
+        int oTall = 0;
+        for(int i = 0; i < a.length; i++) {
+            if (!(a[i] % 2 == 0)) {
+                oTall++;
             }
         }
-        
+        if(oTall == 0 | oTall == a.length) { //Hvis det er kun partal eller oddetall
+            quickSort(a, 0, a.length - 1);
+            return;
+        }else{
+            int index = 0;
+            int tmp;
+            for (int i = 0; i < a.length; i++) {
+                if (a[i] % 2 != 0) {
+                    tmp = a[i];
+                    a[i] = a[index];
+                    a[index] = tmp;
+                    index++;
+                }
+            }
+            quickSort(a, 0, oTall - 1);
+            quickSort(a, oTall, a.length - 1);
+        }
+    }
+    
+    public static void quickSort(int[] a, int start, int end) {
+        int i = start;
+        int k = end;
+        int pivot = a[start + (end - start) / 2];
+
+        int temp;
+        while(i <= k) {
+            while(a[i] < pivot) {
+                i++;
+            }
+            while(a[k] > pivot) {
+                k--;
+            }
+            if(i <= k) {
+                temp = a[i];
+                a[i] = a[k];
+                a[k] = temp;
+                i++;
+                k--;
+            }
+        }
+        //Kaller quicksort rekursivt
+        if(start < k)
+            quickSort(a, start, k);
+        if(i < end)
+            quickSort(a, i, end);
     }
 
+    
     //oppgave 5
     public static void rotasjon(char[] a){
 
@@ -137,32 +159,44 @@ public class Oblig1 {
     }
 
 
+    //Oppgave 6
+    public static void rotasjon(char[] a, int k)    // 3. versjon
+    {
+        int lengde = a.length;
+        if (lengde < 2) {
+            return;
+        }
 
-    //oppgave 6
-    public  static void rotasjon(char[] a, int k) {
+        k = k % lengde;
+        if (k < 0) {
+            k += lengde;
+        }
 
-        int lengde = a.length -1;
-           if (k <= 0) {
-                for (int j = k; j < 0; j++) {
-                    for (int i = 0; i < lengde; i++) {
-                       char temp = a[i];
-                       a[i] = a[i + 1];
-                       a[i + 1] = temp;
+        int s = euklids(lengde, k);
 
-                   }
-                }
-           }else {
-              for (int j = 0; j < k; j++) {
-                   for (int i = lengde; i > 0; i--) {
-
-                       char temp = a[i];
-                       a[i] = a[i - 1];
-                       a[i - 1] = temp;
-                   }
-              }
-           }
+        for (int i = 0; i < s; i++)
+        {
+            char verdi = a[i];
+            int n = i;
+            for (int j = i - k; j != i; j -= k)
+            {
+                if (j < 0) j += lengde;
+                a[n] = a[j];
+                n = j;
+            }
+            a[i + k] = verdi;
+        }
     }
-    
+
+    public static int euklids(int a, int k) ///Finner storste felles divisor
+    {
+        if (k == 0) {
+            return a;
+        }
+        else {
+            return euklids(k, a % k);
+        }
+    }
 
     
     //Oppgave 7a)
@@ -231,6 +265,7 @@ public class Oblig1 {
         return indeks;
     }
     
+    
     //Oppgave 9
     public static int[] tredjeMin(int[]  a){
         if(a.length < 3){
@@ -270,39 +305,32 @@ public class Oblig1 {
         }
         return new int[] {m, nm, tm};
     }
-
-    //oppgave 10
-
+    
+    
+    //Oppgave 10
     public static boolean inneholdt(String a, String b) {
-
-
         String[] delerB = b.split("");
         String[] delerA = a.split("");
         Arrays.sort(delerA);
         Arrays.sort(delerB);
-
+        
         if (a.length() == 0){
             return true;
         }
         if(b.length() == 0){
             return false;
         }
-
-            int j = 0;
-            for (int i = 0; i < delerB.length; ++i) {
-
-                if (delerA[j].equals(delerB[i])) {
-                    j++;
-
-                    if (j == delerA.length) {
-                        return true;
-                    }
+        int j = 0;
+        for (int i = 0; i < delerB.length; ++i) {
+            if (delerA[j].equals(delerB[i])) {
+                j++;
+                if (j == delerA.length) {
+                    return true;
                 }
             }
-
-            return false;
         }
-
+        return false;
     }
+}
 
 
