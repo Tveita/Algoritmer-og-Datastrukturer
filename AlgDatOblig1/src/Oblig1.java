@@ -14,28 +14,6 @@ Gustav Wehn, s326171
 */
 public class Oblig1 {
 
-    public static void main(String [] args) {
-        //int a[]= {9,6,7,9,7,4,7,8,3};
-        //char b[] = {'a','b','c','d','e','f','g','h','i','j'};
-        //System.out.println(maks(a));
-        //System.out.println(ombyttinger(a));
-        //System.out.println(antallUlikeSortert(a));
-        //System.out.println(antallUlikeUsortert(a));
-        //System.out.println(Arrays.toString(a));
-        //delsortering(a);
-        //System.out.println(Arrays.toString(a));
-        //String b = flett("123","456");
-        //System.out.println(b);
-        //String b = flett("AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU");
-        //System.out.println(b);
-       // a = indekssortering(a);
-      //  System.out.println(Arrays.toString(a));
-        //rotasjon(b, 4);
-        //System.out.println(Arrays.toString(b));
-         // String b = flett("AM ","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU");
-        //System.out.println(b);
-        //boolean b = inneholdt("AB","ABbIJDSab");
-    }
 
 
     
