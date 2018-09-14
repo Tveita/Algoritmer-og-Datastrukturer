@@ -47,14 +47,14 @@ public class Oblig1{
     //Punkt 1: Det blir flest byttinger naar tabellen er sortert med det storste tallet forst;
     //Punkt 2: Det blir ferrest byttinger naar tabellen er sortert i stigende rekkefolge;
     //Punkt 3: 
-    //MÅ SVARE PÅ PUNKT TRE FRA OPPGAVE 1
+    //MAA SVARE PAA PUNKT TRE FRA OPPGAVE 1
     
     
     //Oppgave 2
     public static int antallUlikeSortert(int[] a){
         for(int i = 1; i < a.length; i++){
             if(a[i] < a[i - 1]){
-                throw new IllegalStateException("Arrayen er ikke sortert i stigende rekkefølge");
+                throw new IllegalStateException("Arrayen er ikke sortert i stigende rekkefolge");
             }
         }
         int ant = 0;
