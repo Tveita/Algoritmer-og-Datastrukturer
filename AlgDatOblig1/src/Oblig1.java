@@ -1,5 +1,3 @@
-package algoritmer.og.datastrukturer;
-
 
 
 import java.util.Arrays;
